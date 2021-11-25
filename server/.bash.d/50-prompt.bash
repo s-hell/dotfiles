@@ -7,5 +7,5 @@ else
 fi
 
 # After each command, append to the history file and reread it
-export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
+export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r; echo -ne '\033]0;${USER}@${HOSTNAME}\007'"
 # vim: set syntax=sh:ts=4:sw=4
