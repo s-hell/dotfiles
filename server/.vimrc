@@ -39,6 +39,8 @@ nnoremap <F2> :call PasteFriendly()<CR>
 inoremap <F2> <C-o>:call PasteFriendly()<CR>
 cnoremap <F2> <C-c>:call PasteFriendly()<CR>
 set clipboard=unnamedplus
+# disable trying to connect to X server
+set clipboard=exclude:.*
 
 " vimwiki specific settings
 set nocompatible
