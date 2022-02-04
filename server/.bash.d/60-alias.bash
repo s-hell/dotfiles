@@ -15,5 +15,7 @@ alias ta="tmux attach"
 alias ll="ls -Nahl --sort=size --color=auto --group-directories-first"
 alias ls="ls --quoting-style=literal --color=auto"
 alias create_patch="diff -crB $1 $2"
+
+alias source_bashrc="source ~/.bashrc"
 # vim: set syntax=sh:ts=4:sw=4
 

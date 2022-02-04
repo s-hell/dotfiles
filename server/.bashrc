@@ -1,7 +1,7 @@
 #!/bin/bash
 # Source local definitions
-if [ -d ~/.bashrc.d ]; then
-  for RC_FILE in ~/bashrc.d/*.bash; do
+if [ -d ~/.bash.d ]; then
+  for RC_FILE in ~/.bash.d/*.bash; do
     # FILE exists and read permission is granted
     if [ -r "$RC_FILE" ]
     then
