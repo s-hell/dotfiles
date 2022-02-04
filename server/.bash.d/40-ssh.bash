@@ -1,13 +1,12 @@
 #!/bin/bash
-if [ -f "${SSH_ENV}" ]; then
-    . "${SSH_ENV}" > /dev/null
-    ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
-        start_agent;
-    }
-else
-# don't start ssh-agent for root
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
     if [[ ${EUID} != 0 ]]; then
         start_agent;
+    fi
+fi
+if [[ ! "$SSH_AUTH_SOCK" ]]; then
+    if [[ ${EUID} != 0 ]]; then
+        source "${SSH_ENV}" >/dev/null
     fi
 fi
 # vim: set syntax=sh:ts=4:sw=4

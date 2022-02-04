@@ -7,4 +7,9 @@ export HISTFILESIZE=10000
 
 export SSH_ENV="$HOME/.ssh/environment"
 
+# for installed pip packages
+if [ -d ~/.local/bin ]; then
+    export PATH=$PATH:~/.local/bin
+fi
+
 # vim: set syntax=sh:ts=4:sw=4
