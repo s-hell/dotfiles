@@ -1,4 +1,3 @@
-#!/bin/bash
 # Source local definitions
 if [ -d ~/.bash.d ]; then
   for RC_FILE in ~/.bash.d/*.bash; do
@@ -9,5 +8,3 @@ if [ -d ~/.bash.d ]; then
     fi
   done
 fi
-# vim: set syntax=sh:ts=4:sw=4
-
