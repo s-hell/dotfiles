@@ -11,5 +11,8 @@ export SSH_ENV="$HOME/.ssh/environment"
 if [ -d ~/.local/bin ]; then
     export PATH=$PATH:~/.local/bin
 fi
+if [ -d ~/bin ]; then
+    export PATH=$PATH:~/bin
+fi
 
 # vim: set syntax=sh:ts=4:sw=4
