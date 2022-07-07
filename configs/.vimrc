@@ -39,11 +39,16 @@ nnoremap <F2> :call PasteFriendly()<CR>
 inoremap <F2> <C-o>:call PasteFriendly()<CR>
 cnoremap <F2> <C-c>:call PasteFriendly()<CR>
 set clipboard=unnamedplus
-" disable trying to connect to X server
-set clipboard=exclude:.*
 
 " vimwiki specific settings
 set nocompatible
+
+" vimwiki setttings
+let wiki_1 = {}
+let wiki_1.path = '~/git/pcspinnt/wiki/vim_wiki'
+nnoremap <leader>wtoc :VimwikiTOC<cr>
+" vimwiki
+let g:vimwiki_list = [{'path': '~/git/pcspinnt/wiki/vim_wiki', 'template_path': '~/git/pcspinnt/wiki/templates', 'template_default': 'shell', 'template_ext': '.html', 'auto_toc': 1}]
 
 " leader key mappings
 nnoremap <leader>w :w<cr>
@@ -82,7 +87,10 @@ map <Leader>x <esc>:tabnext<CR>
 " fold xml files
 let g:xml_syntax_folding=1
 autocmd BufRead *.xml set foldmethod=syntax
-autocmd FileType yaml setlocal et ts=2 ai sw=2 nu sts=0
+
+" ansible plugin for specifc files
+au BufRead,BufNewFile */bxplaybooks/common/*.yml set filetype=yaml.ansible
+au BufRead,BufNewFile */bxplaybooks/bx/*.yml set filetype=yaml.ansible
 
 " Color scheme
 colorscheme darkblue
@@ -105,6 +113,10 @@ nnoremap <F5> :call ExecuteFile()<CR>
 " settings nerdcommenter
 let g:NERDCommentEmptyLines = 1
 let g:NERDDefaultAlign = 'left'
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+" Enable NERDCommenterToggle to check all selected lines is commented or not 
+let g:NERDToggleCheckAllLines = 1
 
 " skeletons
 au BufNewFile *.sh 0r ~/.vim/skeletons/skeleton.sh
@@ -122,9 +134,9 @@ let g:netrw_winsize = 15
 " correct shell command.
 function! ExecuteFile()
   let filetype_to_command = {
-  \   'python': 'python',
+  \   'py': 'python',
   \   'html': 'open',
-  \   'sh': 'sh'
+  \   'sh': 'sh',
   \   'bash': 'bash'
   \ }
   let cmd = get(filetype_to_command, &filetype, &filetype)
@@ -185,7 +197,7 @@ let g:pymode_lint_checkers = ["pep8","pyflakes"]
 " Auto check on save
 let g:pymode_lint_write = 1
 " Don't autofold code
-let g:pymode_folding = 0
+let g:pymode_folding = 1
 let g:pymode_python = 'python3'
 
 " vim: set ts=4 sw=4 tw=0
