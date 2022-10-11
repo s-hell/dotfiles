@@ -73,4 +73,13 @@ function start_agent {
     /usr/bin/ssh-add;
 }
 
+# backupf function
+function backupf () {
+    str=$1
+    if [ "${str: -1}" = "/" ]; then
+        echo "${str::-1}"
+    fi
+    cp -r $str $str.$(date +"%Y%m%d_%H%M%S")
+}
+
 # vim: set syntax=sh:ts=4:sw=4
