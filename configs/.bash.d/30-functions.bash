@@ -8,7 +8,7 @@ array_contains () {
     local seeking=$2
     local in=1
     for element in "${!array}"; do
-        if [[ $element == $seeking ]]; then
+        if [[ $element == "$seeking" ]]; then
             in=0
             break
         fi
@@ -32,19 +32,19 @@ mkzip() {
 
 # extract
 extract () {
-   if [ -f $1 ] ; then
+   if [ -f "$1" ] ; then
        case $1 in
-           *.tar.bz2)   tar xvjf $1    ;;
-           *.tar.gz)    tar xvzf $1    ;;
-           *.bz2)       bunzip2 $1     ;;
-           *.rar)       unrar x $1       ;;
-           *.gz)        gunzip $1      ;;
-           *.tar)       tar xvf $1     ;;
-           *.tbz2)      tar xvjf $1    ;;
-           *.tgz)       tar xvzf $1    ;;
-           *.zip)       unzip $1       ;;
-           *.Z)         uncompress $1  ;;
-           *.7z)        7z x $1        ;;
+           *.tar.bz2)   tar xvjf "$1"    ;;
+           *.tar.gz)    tar xvzf "$1"    ;;
+           *.bz2)       bunzip2 "$1"     ;;
+           *.rar)       unrar x "$1"     ;;
+           *.gz)        gunzip "$1"      ;;
+           *.tar)       tar xvf "$1"     ;;
+           *.tbz2)      tar xvjf "$1"    ;;
+           *.tgz)       tar xvzf "$1"    ;;
+           *.zip)       unzip "$1"       ;;
+           *.Z)         uncompress "$1"  ;;
+           *.7z)        7z x "$1"        ;;
            *)           echo "don't know how to extract '$1'..." ;;
        esac
    else
@@ -53,8 +53,8 @@ extract () {
 }
 
 testcert () {
-    h=$(echo $1|cut -d":" -f1 )
-    p=$(echo $1 |cut -d":" -f2 )
+    h=$(echo "$1"|cut -d":" -f1 )
+    p=$(echo "$1" |cut -d":" -f2 )
     if [ $p == $h ]; then
         p="443"
     fi
