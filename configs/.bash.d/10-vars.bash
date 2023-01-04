@@ -4,6 +4,7 @@ export LS_COLORS="di=1;36:ex=1;31"
 export HISTCONTROL=ignoredups:erasedups
 export HISTSIZE=5000
 export HISTFILESIZE=10000
+export HISTTIMEFORMAT="%F %T "
 
 export SSH_ENV="$HOME/.ssh/environment"
 

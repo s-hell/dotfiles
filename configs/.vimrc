@@ -1,4 +1,4 @@
-" plugins neede
+" plugins needed
 " pathogen (https://github.com/tpope/vim-pathogen)
 " mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 " 
@@ -8,10 +8,14 @@
 " nerd-commenter
 " cd ~/.vim/bundle && git clone https://github.com/preservim/nerdcommenter.git
 "
+" vim-ansible
+" git clone https://github.com/pearofducks/ansible-vim ~/.vim/bundle/ansible-vim
+"
 " colorscheme
 "
 " mkdir -p ~/.vim/colors && cd ~/.vim/colors && wget https://raw.githubusercontent.com/habamax/vim-colors-defnoche/master/colors/defnoche.vim
-
+"
+"
 "
 " Automatic reloading of .vimrc
 "
@@ -119,6 +123,12 @@ let g:NERDCommentEmptyLines = 1
 let g:NERDDefaultAlign = 'left'
 map <C-d> <plug>NERDCommenterToggle<CR>
 imap <C-d> <Esc><plug>NERDCommenterToggle<CR>
+
+"
+" ansible-vim
+"
+let g:ansible_unindent_after_newline = 1
+
 
 " functions
 " Append modeline after last line in buffer.

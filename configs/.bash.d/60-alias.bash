@@ -18,4 +18,3 @@ alias create_patch="diff -crB $1 $2"
 
 alias source_bashrc="source ~/.bashrc"
 # vim: set syntax=sh:ts=4:sw=4
-
