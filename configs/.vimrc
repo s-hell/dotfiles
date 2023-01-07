@@ -40,8 +40,7 @@ call pathogen#infect()
 syntax on
 " ignore case when search
 set ignorecase
-" highlight search result
-set hlsearch
+" highlight search result set hlsearch
 " disable swapfile
 set noswapfile
 " disable automatic backup
@@ -130,14 +129,55 @@ imap <C-d> <Esc><plug>NERDCommenterToggle<CR>
 "
 let g:ansible_unindent_after_newline = 1
 
+"
+" autocompletion
+"
+" Minimalist-TabComplete-Plugin
+inoremap <expr> <Tab> TabComplete()
+fun! TabComplete()
+    if getline('.')[col('.') - 2] =~ '\K' || pumvisible()
+        return "\<C-P>"
+    else
+        return "\<Tab>"
+    endif
+endfun
 
-" functions
-" Append modeline after last line in buffer.
-" Use substitute() instead of printf() to handle '%%s' modeline in LaTeX
-" files.
-function! AppendModeline()
-  let l:modeline = printf(" vim: set ts=%d sw=%d tw=%d",
-        \ &tabstop, &shiftwidth, &textwidth ? '' : 'no')
-  let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
-  call append(line("$"), l:modeline)
-endfunction
+" Minimalist-AutoCompletePop-Plugin
+set completeopt=menu,menuone,noinsert
+inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
+autocmd InsertCharPre * call AutoComplete()
+fun! AutoComplete()
+    if v:char =~ '\K'
+        \ && getline('.')[col('.') - 4] !~ '\K'
+        \ && getline('.')[col('.') - 3] =~ '\K'
+        \ && getline('.')[col('.') - 2] =~ '\K' " last char
+        \ && getline('.')[col('.') - 1] !~ '\K'
+
+        call feedkeys("\<C-P>", 'n')
+    end
+endfun
+
+" Minimalist-TabComplete-Plugin
+inoremap <expr> <Tab> TabComplete()
+fun! TabComplete()
+    if getline('.')[col('.') - 2] =~ '\K' || pumvisible()
+        return "\<C-P>"
+    else
+        return "\<Tab>"
+    endif
+endfun
+
+" Minimalist-AutoCompletePop-Plugin
+set completeopt=menu,menuone,noinsert
+inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
+autocmd InsertCharPre * call AutoComplete()
+fun! AutoComplete()
+    if v:char =~ '\K'
+        \ && getline('.')[col('.') - 4] !~ '\K'
+        \ && getline('.')[col('.') - 3] =~ '\K'
+        \ && getline('.')[col('.') - 2] =~ '\K' " last char
+        \ && getline('.')[col('.') - 1] !~ '\K'
+
+        call feedkeys("\<C-P>", 'n')
+    end
+endfun
