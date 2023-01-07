@@ -24,7 +24,8 @@ autocmd! bufwritepost .vimrc source %
 "
 " colorscheme
 "
-colorscheme defnoche
+"colorscheme defnoche
+colorscheme industry
 
 "
 " plugins
