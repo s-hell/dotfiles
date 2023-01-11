@@ -53,6 +53,8 @@ set expandtab
 set clipboard=unnamedplus
 " Set working directory to the current file
 set autochdir
+" highlight search results
+set hlsearch
 " set leader key
 let mapleader = "\<space>"
 
@@ -97,6 +99,17 @@ inoremap <C-n> :nohl<CR>
 noremap <C-f> za
 inoremap <C-f> za
 vnoremap <C-f> za
+" easier moving of code blocks
+" Try to go into visual mode (v), thenselect several lines of code here and
+" then press ``>`` several times.
+vnoremap < <gv  " better indentation
+vnoremap > >gv  " better indentation
+" Bind nohl
+" Removes highlight of your last search
+" ``<C>`` stands for ``CTRL`` and therefore ``<C-n>`` stands for ``CTRL+n``
+noremap <C-n> :nohl<CR>
+vnoremap <C-n> :nohl<CR>
+inoremap <C-n> :nohl<CR>
 
 " module specific settings
 "
