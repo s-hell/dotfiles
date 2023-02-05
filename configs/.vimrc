@@ -86,6 +86,9 @@ nnoremap <leader>n :set nonumber!<cr>
 nnoremap <leader>p :set invpaste paste?<cr>
 nnoremap <leader>h :call PasteFriendly()<cr>
 nnoremap <leader>f :set foldmethod=syntax<cr>
+" tabs
+map <Leader>y <esc>:tabprevious<CR>
+map <Leader>x <esc>:tabnext<CR>
 "
 " other keys
 "
@@ -194,3 +197,4 @@ fun! AutoComplete()
         call feedkeys("\<C-P>", 'n')
     end
 endfun
+
