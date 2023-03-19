@@ -1,7 +1,7 @@
 " plugins needed
 " pathogen (https://github.com/tpope/vim-pathogen)
 " mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-" 
+"
 " pymode (https://github.com/python-mode/python-mode)
 " cd ~/.vim/bundle && git clone --recurse-submodules https://github.com/python-mode/python-mode
 "
@@ -29,14 +29,14 @@ colorscheme industry
 
 "
 " plugins
-" 
+"
 filetype plugin indent on
 " Setup Pathogen to manage your plugins
 call pathogen#infect()
 
 "
 " option
-" 
+"
 syntax on
 " ignore case when search
 set ignorecase
@@ -53,15 +53,13 @@ set expandtab
 set clipboard=unnamedplus
 " Set working directory to the current file
 set autochdir
-" highlight search results
-set hlsearch
 " set leader key
 let mapleader = "\<space>"
 
 "
 " autocmd
 "
-autocmd FileType yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2 cursorcolumn
+autocmd FileType yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd FileType py setlocal tabstop=8 shiftwidth=4 softtabstop=4
 
 "
@@ -72,7 +70,7 @@ au BufNewFile *.py 0r ~/.vim/skeletons/skeleton.py
 au BufNewFile main.yml 0r ~/.vim/skeletons/ansible.yml
 
 "
-" custom key maps 
+" custom key maps
 "
 " leader keys
 "
@@ -86,9 +84,6 @@ nnoremap <leader>n :set nonumber!<cr>
 nnoremap <leader>p :set invpaste paste?<cr>
 nnoremap <leader>h :call PasteFriendly()<cr>
 nnoremap <leader>f :set foldmethod=syntax<cr>
-" tabs
-map <Leader>y <esc>:tabprevious<CR>
-map <Leader>x <esc>:tabnext<CR>
 "
 " other keys
 "
@@ -102,17 +97,6 @@ inoremap <C-n> :nohl<CR>
 noremap <C-f> za
 inoremap <C-f> za
 vnoremap <C-f> za
-" easier moving of code blocks
-" Try to go into visual mode (v), thenselect several lines of code here and
-" then press ``>`` several times.
-vnoremap < <gv  " better indentation
-vnoremap > >gv  " better indentation
-" Bind nohl
-" Removes highlight of your last search
-" ``<C>`` stands for ``CTRL`` and therefore ``<C-n>`` stands for ``CTRL+n``
-noremap <C-n> :nohl<CR>
-vnoremap <C-n> :nohl<CR>
-inoremap <C-n> :nohl<CR>
 
 " module specific settings
 "
@@ -172,29 +156,3 @@ fun! AutoComplete()
         call feedkeys("\<C-P>", 'n')
     end
 endfun
-
-" Minimalist-TabComplete-Plugin
-inoremap <expr> <Tab> TabComplete()
-fun! TabComplete()
-    if getline('.')[col('.') - 2] =~ '\K' || pumvisible()
-        return "\<C-P>"
-    else
-        return "\<Tab>"
-    endif
-endfun
-
-" Minimalist-AutoCompletePop-Plugin
-set completeopt=menu,menuone,noinsert
-inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
-autocmd InsertCharPre * call AutoComplete()
-fun! AutoComplete()
-    if v:char =~ '\K'
-        \ && getline('.')[col('.') - 4] !~ '\K'
-        \ && getline('.')[col('.') - 3] =~ '\K'
-        \ && getline('.')[col('.') - 2] =~ '\K' " last char
-        \ && getline('.')[col('.') - 1] !~ '\K'
-
-        call feedkeys("\<C-P>", 'n')
-    end
-endfun
-

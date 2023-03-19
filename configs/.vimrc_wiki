@@ -1,7 +1,7 @@
 " plugins needed
 " pathogen (https://github.com/tpope/vim-pathogen)
 " mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-" 
+"
 " pymode (https://github.com/python-mode/python-mode)
 " cd ~/.vim/bundle && git clone --recurse-submodules https://github.com/python-mode/python-mode
 "
@@ -29,14 +29,14 @@ colorscheme industry
 
 "
 " plugins
-" 
+"
 filetype plugin indent on
 " Setup Pathogen to manage your plugins
 call pathogen#infect()
 
 "
 " option
-" 
+"
 syntax on
 " ignore case when search
 set ignorecase
@@ -59,7 +59,7 @@ let mapleader = "\<space>"
 "
 " autocmd
 "
-autocmd FileType yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2 cursorcolumn
+autocmd FileType yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd FileType py setlocal tabstop=8 shiftwidth=4 softtabstop=4
 
 "
@@ -70,7 +70,7 @@ au BufNewFile *.py 0r ~/.vim/skeletons/skeleton.py
 au BufNewFile main.yml 0r ~/.vim/skeletons/ansible.yml
 
 "
-" custom key maps 
+" custom key maps
 "
 " leader keys
 "
@@ -157,32 +157,7 @@ fun! AutoComplete()
     end
 endfun
 
-" Minimalist-TabComplete-Plugin
-inoremap <expr> <Tab> TabComplete()
-fun! TabComplete()
-    if getline('.')[col('.') - 2] =~ '\K' || pumvisible()
-        return "\<C-P>"
-    else
-        return "\<Tab>"
-    endif
-endfun
-
-" Minimalist-AutoCompletePop-Plugin
-set completeopt=menu,menuone,noinsert
-inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
-autocmd InsertCharPre * call AutoComplete()
-fun! AutoComplete()
-    if v:char =~ '\K'
-        \ && getline('.')[col('.') - 4] !~ '\K'
-        \ && getline('.')[col('.') - 3] =~ '\K'
-        \ && getline('.')[col('.') - 2] =~ '\K' " last char
-        \ && getline('.')[col('.') - 1] !~ '\K'
-
-        call feedkeys("\<C-P>", 'n')
-    end
-endfun
-
 " vimwiki
-let wiki_1 = {}                                                                                                                                                                                                                                                                  
+let wiki_1 = {}
 let wiki_1.path = '~/git/pcspinnt/wiki/vim_wiki'
 let g:vimwiki_list = [{'path': '~/git/pcspinnt/wiki/vim_wiki', 'template_path': '~/git/pcspinnt/wiki/templates', 'template_default': 'shell', 'template_ext': '.html', 'auto_toc': 1}]
