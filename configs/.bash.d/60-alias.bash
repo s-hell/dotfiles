@@ -17,4 +17,12 @@ alias ls="ls --quoting-style=literal --color=auto"
 alias create_patch="diff -crB $1 $2"
 
 alias source_bashrc="source ~/.bashrc"
+
+# bookmarks for venv ansible
+if [ -f ~/.local/pipx/venvs/ansible/bin/activate ];then
+    source ~/.local/pipx/venvs/ansible/bin/activate
+    alias aping="ansible -m ping -v"
+    alias aconf="ansible-config dump --only-changed"
+fi
+
 # vim: set syntax=sh:ts=4:sw=4
