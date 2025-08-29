@@ -15,5 +15,7 @@ fi
 if [ -d ~/bin ]; then
     export PATH=$PATH:~/bin
 fi
-
+if [ -d ~/.cargo/bin ]; then
+    export PATH=$PATH:~/.cargo/bin
+fi
 # vim: set syntax=sh:ts=4:sw=4
