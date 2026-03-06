@@ -1,12 +1,11 @@
 #!/bin/bash
 export LS_COLORS="di=1;36:ex=1;31"
 # history
-export HISTCONTROL=ignoredups:erasedups
+export HISTCONTROL=ignoreboth:ignoredups:erasedups:ignorespace
 export HISTSIZE=5000
 export HISTFILESIZE=10000
-export HISTTIMEFORMAT="%F %T "
-
-export SSH_ENV="$HOME/.ssh/environment"
+export HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S"
+export HISTIGNORE='ls:ls -ahlt:ll:sudo -i'
 
 # for installed pip packages
 if [ -d ~/.local/bin ]; then
@@ -15,7 +14,5 @@ fi
 if [ -d ~/bin ]; then
     export PATH=$PATH:~/bin
 fi
-if [ -d ~/.cargo/bin ]; then
-    export PATH=$PATH:~/.cargo/bin
-fi
+
 # vim: set syntax=sh:ts=4:sw=4
