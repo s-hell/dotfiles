@@ -55,12 +55,12 @@ extract () {
 testcert () {
     h=$(echo "$1"|cut -d":" -f1 )
     p=$(echo "$1" |cut -d":" -f2 )
-    if [ $p == $h ]; then
+    if [ "$p" == "$h" ]; then
         p="443"
     fi
     echo "Cert for Host $h Port $p"
     echo ""
-    echo "logout" | openssl s_client -CApath /etc/ssl/certs/ -connect $h:$p | openssl x509 -text|more
+    echo "logout" | openssl s_client -CApath /etc/ssl/certs/ -connect "$h":"$p" | openssl x509 -text|more
 }
 
 # start ssh agent + add key
@@ -79,7 +79,7 @@ function backupf () {
     if [ "${str: -1}" = "/" ]; then
         echo "${str::-1}"
     fi
-    cp -r $str $str.$(date +"%Y%m%d_%H%M%S")
+    cp -r "$str" "$str"."$(date +'%Y%m%d_%H%M%S')"
 }
 
 # vim: set syntax=sh:ts=4:sw=4

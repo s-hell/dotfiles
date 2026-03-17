@@ -11,10 +11,9 @@ alias cb8='alias b8="cd `pwd`" && echo -e "\nBookmark b8: `pwd` created.\n"'
 alias cb9='alias b9="cd `pwd`" && echo -e "\nBookmark b9: `pwd` created.\n"'
 alias lb='alias | grep -e "alias b[0-9]"|grep -v "alias cb"|sed "s/alias //"'
 
-alias ta="tmux attach"
-alias ll="ls -Nahl --sort=size --color=auto --group-directories-first"
-alias ls="ls --quoting-style=literal --color=auto"
-alias create_patch="diff -crB $1 $2"
+alias ta='tmux attach'
+alias ll='ls -Nahl --sort=size --color=auto --group-directories-first'
+alias ls='ls --quoting-style=literal --color=auto'
 
-alias source_bashrc="source ~/.bashrc"
+alias source_bashrc='source ~/.bashrc'
 # vim: set syntax=sh:ts=4:sw=4
