@@ -12,3 +12,7 @@ Be aware: If you qnt to use it, you have to modify pathes etc. There are also co
 
 ## waybar
 [Here](configs/.config/waybar) you can find my waybar config.
+
+# foot
+
+I'm using foot as my prefered terminal emulator. I did some minor changes to the [config}(configs/.config/foot/foot.ini).
