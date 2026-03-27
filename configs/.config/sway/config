@@ -5,9 +5,14 @@
 # Read `man 5 sway` for a complete reference.
 
 
-font pango:B612 12
+font pango:B612Mono 10
+titlebar_border_thickness 0
+titlebar_padding 1 1
+
+smart_borders on
+smart_gaps on
+
 ### Variables
-#
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
@@ -18,7 +23,7 @@ set $right l
 # Your preferred terminal emulator
 set $term foot
 # Your preferred application launcher
-set $menu wmenu-run -n 999999 -N 111111 -s 111111 -S 999999 -m 999999 -M 111111 -f 'Sans Serif:size=24'-l 10 -p RUN
+set $menu wmenu-run -n 999999 -N 111111 -s 111111 -S 999999 -m 999999 -M 111111 -l 10 -p RUN
 
 ### Output configuration
 #
@@ -43,10 +48,6 @@ bindsym $mod+Control+Shift+Down  move workspace to output down
 #
 # Example configuration:
 #
-#exec swayidle -w \
-#         timeout 300 'swaylock -f -c 000000' \
-#         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#         before-sleep 'swaylock -f -c 000000'
 exec swayidle -w \
          timeout 300 'swaylock -f -c 000000 --image $(ls -d /home/shellmann/data/sync/dateien/screensaver/* | sort -R | tail -1) -s center' \
          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
@@ -258,8 +259,8 @@ default_floating_border pixel 1
 # output
 set $laptopoutput eDP-1
 output $laptopoutput pos 1920 1080
-output DP-1 pos 1920 0
-output HDMI-A-1 pos 0 0
+output DP-1 pos 0 0
+output HDMI-A-1 pos 1920 0
 
 # colors
 client.focused          #008800 #008800 #000000 #008800
@@ -291,17 +292,26 @@ for_window [window_type = "dialog"] floating enable
 for_window [window_role = "task_dialog"] floating enable
 for_window [window_type = "menu"] floating enable
 for_window [app_id = "blueman-manage"] floating enable
+
 # workspace
 assign [app_id="firefox"] workspace 2
 assign [app_id="librewolf"] workspace 2
 assign [app_id="signal"] workspace 3
+assign [app_id="spotify"] workspace 4
 assign [instance="vscodium"] workspace 5
 assign [class="mage-client-MageFrame"] workspace 9
+assign [title="^XMage Launcher"] workspace 8
+
+# specify workspace layout
 
 
 #include /etc/sway/config.d/*
 include keyboard
 include touchpad
+
+# hide mouse
+seat seat0 hide_cursor when-typing enable
+seat seat0 hide_cursor 1000
 
 # autostart
 exec gnome-keyring-daemon --start --components=secrets
@@ -312,4 +322,5 @@ exec /usr/sbin/nm-applet
 exec /usr/bin/blueman-applet
 exec /usr/bin/nextcloud --background
 exec /usr/sbin/librewolf &
+exec /usr/sbin/spotify-launcher &
 exec /usr/sbin/signal-desktop &

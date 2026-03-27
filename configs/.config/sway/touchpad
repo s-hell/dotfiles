@@ -1,0 +1,16 @@
+input "10182:480:GXTP7863:00_27C6:01E0_Touchpad" {
+  events enabled
+  accel_profile adaptive
+  pointer_accel 0.6
+  natural_scroll disabled
+  scroll_factor 1.0
+  scroll_method two_finger
+  left_handed disabled
+  tap enabled
+  tap_button_map lrm
+  drag enabled
+  drag_lock disabled
+  dwt enabled
+  middle_emulation enabled
+  click_method button_areas
+}
